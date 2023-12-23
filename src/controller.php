@@ -9,7 +9,7 @@ class Controller {
             $this->$actionName();
         } else {
             // if the function showAction() doesn't exist direct me
-            include __DIR__ . '/../view/status-pages/505.html';
+            include __DIR__ . '/../view/status-pages/404.html';
         }
     }
 
