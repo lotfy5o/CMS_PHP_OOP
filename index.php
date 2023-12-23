@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . '/src/controller.php';
+
+
 // if / else logic
 
 // url= index.php?section=about-us => ?? (the null coalescing operator) checks if the left side ($_get['section']) exist
@@ -7,34 +10,21 @@
 $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 
 // it returns the first operand if exist, if not the second one and so on.
+$action = $_GET['action'] ?? $_POST['action'] ?? 'default'; // we replaced 'show' with 'default' cuz it wont be limited to the contactUs.php
 
-$action = $_GET['action'] ?? $_POST['action'] ?? 'show';
-
-
+// echo $action;
 // if I wrote section=about-us after the question mark in the url, it will direct me to the aboutUs.php
-if ($section == 'about-us'){
-  
+if ($section == 'about'){
   include __DIR__ . '/controller/aboutUs.php';
-  
-}
-else if ($section == 'contact-us'){
+  $aboutController = new aboutController();
+  $aboutController->runAction($action);
+} else if ($section == 'contact'){
 
   include __DIR__ . '/controller/contactUs.php';
   $contactController = new contactController();
+  $contactController->runAction($action);
 
-
-    if ($action == 'show'){
-      
-      $contactController->showFormAction();
-    }
-    else if ($action == 'submit'){
-      // validate
-      // store data
-      // send email
-      $contactController->sumbitContactFormAction();
-    }
-}
-else {
+} else {
   
   // the index.php calls the homePage.php which is calling the home-page.html
   include __DIR__ . '/controller/homePage.php';
