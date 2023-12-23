@@ -6,6 +6,8 @@
 // if not it assigns the $section variable to 'home';
 $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 
+// it returns the first operand if exist, if not the second one and so on.
+
 $action = $_GET['action'] ?? $_POST['action'] ?? 'show';
 
 
@@ -17,16 +19,19 @@ if ($section == 'about-us'){
 }
 else if ($section == 'contact-us'){
 
+  include __DIR__ . '/controller/contactUs.php';
+  $contactController = new contactController();
+
 
     if ($action == 'show'){
       
-      include __DIR__ . '/view/contact-us.html';
+      $contactController->showFormAction();
     }
     else if ($action == 'submit'){
       // validate
       // store data
       // send email
-      include __DIR__ . '/view/thank-u.html';
+      $contactController->sumbitContactFormAction();
     }
 }
 else {
