@@ -4,7 +4,9 @@
 
 // url= index.php?section=about-us => ?? (the null coalescing operator) checks if the left side ($_get['section']) exist
 // if not it assigns the $section variable to 'home';
-$section = $_GET['section'] ?? 'home';
+$section = $_GET['section'] ?? $_POST['section'] ?? 'home';
+
+$action = $_GET['action'] ?? $_POST['action'] ?? 'show';
 
 
 // if I wrote section=about-us after the question mark in the url, it will direct me to the aboutUs.php
@@ -14,7 +16,18 @@ if ($section == 'about-us'){
   
 }
 else if ($section == 'contact-us'){
-  include __DIR__ . '/controller/contactUs.php';
+
+
+    if ($action == 'show'){
+      
+      include __DIR__ . '/view/contact-us.html';
+    }
+    else if ($action == 'submit'){
+      // validate
+      // store data
+      // send email
+      include __DIR__ . '/view/thank-u.html';
+    }
 }
 else {
   
