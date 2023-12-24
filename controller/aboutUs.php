@@ -7,7 +7,7 @@ class aboutController extends Controller {
         $variables['content'] = 'About Us Content of the page';
 
 
-        $template = new Template();
+        $template = new Template('default');
         $template->view('static-page', $variables);
 
     }

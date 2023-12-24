@@ -1,7 +1,12 @@
 <?php
 session_start();
-require_once __DIR__ . '/src/controller.php';
-require_once __DIR__ . '/src/template.php';
+
+
+define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR);
+
+require_once ROOT_PATH . '/src/controller.php';
+require_once ROOT_PATH . '/src/template.php';
 
 
 // if / else logic
@@ -16,19 +21,19 @@ $action = $_GET['action'] ?? $_POST['action'] ?? 'default'; // we replaced 'show
 // echo $action;
 // if I wrote section=about-us after the question mark in the url, it will direct me to the aboutUs.php
 if ($section == 'about'){
-  include __DIR__ . '/controller/aboutUs.php';
+  include ROOT_PATH . '/controller/aboutUs.php';
   $aboutController = new aboutController();
   $aboutController->runAction($action);
 } else if ($section == 'contact'){
 
-  include __DIR__ . '/controller/contactUs.php';
+  include ROOT_PATH . '/controller/contactUs.php';
   $contactController = new contactController();
   $contactController->runAction($action);
 
 } else {
   
-  // the index.php calls the homePage.php which is calling the home-page.html
-  include __DIR__ . '/controller/homePage.php';
+  
+  include ROOT_PATH . '/controller/homePage.php';
   $homePageController = new HomePageController();
   $homePageController->runAction($action);
 }

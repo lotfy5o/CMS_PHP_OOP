@@ -17,9 +17,13 @@ class contactController extends Controller {
     }
 
     function defaultAction() {
-       
-       
-        include __DIR__ . '/../view/contact/contact-us.html';
+
+        $variables['title'] = 'Contact Us';
+        $variables['content'] = 'Please Write Us a Message';
+
+
+        $template = new Template();
+        $template->view('contact/contact-us', $variables);
     }
 
     // if we clicked the button send in the contact-us form
