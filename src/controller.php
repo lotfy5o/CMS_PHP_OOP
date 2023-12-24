@@ -3,7 +3,7 @@
 class Controller {
     function runAction ($actionName) {
 
-
+        echo 'inside Controller::runAction<br>';
         if (method_exists($this, 'runBeforeAction')){
             $this->runBeforeAction();
         }

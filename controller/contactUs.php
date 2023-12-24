@@ -3,7 +3,10 @@
 
 class contactController extends Controller {
 
-    private function runBeforeAction() {
+    function runBeforeAction() {
+        echo 'inside contactController::beforeAction <br>';
+        // we can use: var_dump($_GET);
+        // var_dump is good for telling you where u are. so u don't need to look for the function
         if ($_SESSION['has_submitted_form'] ?? 0 == 1){
             
             include __DIR__ . '/../view/contact/contact-us-already-contacted.html';
@@ -13,9 +16,8 @@ class contactController extends Controller {
     }
 
     function defaultAction() {
-        if ($_SESSION['has_submitted_form'] ?? 0 == 1){
-            include __DIR__ . '/../view/contact/thank-u.html';
-        }
+       
+        echo 'inside contactController::defaultAction<br>';
         include __DIR__ . '/../view/contact/contact-us.html';
     }
 
@@ -23,12 +25,7 @@ class contactController extends Controller {
     // we will be directed to the thank-u.html;
     // the $action should equal to this function either through $_GET or $_POST
     function sumbitContactFormAction() {
-        // we used the ! operator cuz the runBeforeAction is returning false
-        // and we want to check if that happened we wana do something
-        // so ! false == true
-        if (!$this->runBeforeAction()){
-            return;
-        }
+    
         
         // validate
         // store data
