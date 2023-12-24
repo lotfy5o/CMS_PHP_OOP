@@ -2,6 +2,13 @@
 
 class Controller {
     function runAction ($actionName) {
+
+
+        if (method_exists($this, 'runBeforeAction')){
+            $this->runBeforeAction();
+        }
+
+
         // for exampel if the $actionName = show it  will be showAction
         $actionName .= 'Action';
         if (method_exists($this, $actionName)) {
