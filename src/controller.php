@@ -3,9 +3,15 @@
 class Controller {
     function runAction ($actionName) {
 
-        echo 'inside Controller::runAction<br>';
+       
         if (method_exists($this, 'runBeforeAction')){
-            $this->runBeforeAction();
+            $result = $this->runBeforeAction();
+            // checks if the runBeforeAction returns anything.
+            // if false it will stop excuting
+            // if true it will excute the action in the $actionName
+            if ($result == false){
+                return;
+            }
         }
 
 

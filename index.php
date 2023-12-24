@@ -1,6 +1,7 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/src/controller.php';
+require_once __DIR__ . '/src/template.php';
 
 
 // if / else logic
@@ -28,6 +29,8 @@ if ($section == 'about'){
   
   // the index.php calls the homePage.php which is calling the home-page.html
   include __DIR__ . '/controller/homePage.php';
+  $homePageController = new HomePageController();
+  $homePageController->runAction($action);
 }
 
 

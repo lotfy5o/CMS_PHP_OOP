@@ -1,10 +1,11 @@
 <?php
 
-
+// session_start();
 class contactController extends Controller {
 
     function runBeforeAction() {
-        echo 'inside contactController::beforeAction <br>';
+        
+
         // we can use: var_dump($_GET);
         // var_dump is good for telling you where u are. so u don't need to look for the function
         if ($_SESSION['has_submitted_form'] ?? 0 == 1){
@@ -17,7 +18,7 @@ class contactController extends Controller {
 
     function defaultAction() {
        
-        echo 'inside contactController::defaultAction<br>';
+       
         include __DIR__ . '/../view/contact/contact-us.html';
     }
 

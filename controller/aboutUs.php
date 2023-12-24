@@ -2,7 +2,13 @@
 
 class aboutController extends Controller {
     function defaultAction() {
-        // calling the about-us.html page
-        include __DIR__ . '/../view/about-us.html';
+    
+        $variables['title'] = 'About Us Page';
+        $variables['content'] = 'About Us Content of the page';
+
+
+        $template = new Template();
+        $template->view('static-page', $variables);
+
     }
 }
