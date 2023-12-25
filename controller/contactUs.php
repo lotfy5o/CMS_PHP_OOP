@@ -10,7 +10,13 @@ class contactController extends Controller {
         // var_dump is good for telling you where u are. so u don't need to look for the function
         if ($_SESSION['has_submitted_form'] ?? 0 == 1){
             
-            include __DIR__ . '/../view/contact/contact-us-already-contacted.html';
+            
+            $variables['title'] = 'You Already Submitted the Form';
+            $variables['content'] = 'Please be patient as we process your message';
+
+
+            $template = new Template('default');
+            $template->view('static-page', $variables);
             return false;
         }
         return true;
@@ -22,7 +28,7 @@ class contactController extends Controller {
         $variables['content'] = 'Please Write Us a Message';
 
 
-        $template = new Template();
+        $template = new Template('default');
         $template->view('contact/contact-us', $variables);
     }
 
@@ -37,7 +43,14 @@ class contactController extends Controller {
         // send email
         
         $_SESSION['has_submitted_form'] = 1;
-        include __DIR__ . '/../view/contact/thank-u.html';
+
+        $variables['title'] = 'Thank You for Your Message';
+        $variables['content'] = 'We Will Get Back to You';
+
+
+        $template = new Template('default');
+        $template->view('static-page', $variables);
+
     }
 
   

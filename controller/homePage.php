@@ -15,7 +15,7 @@ class HomePageController extends Controller {
         $variables['content'] = 'Welcome to our homepage';
 
 
-        $template = new Template();
+        $template = new Template('default');
         $template->view('static-page', $variables);
 
         // calling the home-page.html page
