@@ -11,9 +11,13 @@ class HomePageController extends Controller {
 
         
 
-        $variables['title'] = 'Home Page Title';
-        $variables['content'] = 'Welcome to our homepage';
+    
 
+        $pageObj = new Page();
+        $pageObj->findById(1);
+
+        // we gona use the $pageObj inside our template
+        $variables['pageObj'] = $pageObj;
 
         $template = new Template('default');
         $template->view('static-page', $variables);
