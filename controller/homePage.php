@@ -9,11 +9,12 @@ class HomePageController extends Controller {
         // $content
         // $variable1
 
-        
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
 
     
 
-        $pageObj = new Page();
+        $pageObj = new Page($dbc);
         $pageObj->findById(1);
 
         // we gona use the $pageObj inside our template

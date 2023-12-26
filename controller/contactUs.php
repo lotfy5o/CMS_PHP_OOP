@@ -11,8 +11,14 @@ class contactController extends Controller {
         if ($_SESSION['has_submitted_form'] ?? 0 == 1){
             
             
-            $variables['title'] = 'You Already Submitted the Form';
-            $variables['content'] = 'Please be patient as we process your message';
+            $dbh = DatabaseConnection::getInstance();
+            $dbc = $dbh->getConnection();
+    
+        
+    
+            $pageObj = new Page($dbc);
+            $pageObj->findById(3);
+            $variables['pageObj'] = $pageObj;
 
 
             $template = new Template('default');
@@ -24,8 +30,14 @@ class contactController extends Controller {
 
     function defaultAction() {
 
-        $variables['title'] = 'Contact Us';
-        $variables['content'] = 'Please Write Us a Message';
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+
+    
+
+        $pageObj = new Page($dbc);
+        $pageObj->findById(5);
+        $variables['pageObj'] = $pageObj;
 
 
         $template = new Template('default');
@@ -44,8 +56,14 @@ class contactController extends Controller {
         
         $_SESSION['has_submitted_form'] = 1;
 
-        $variables['title'] = 'Thank You for Your Message';
-        $variables['content'] = 'We Will Get Back to You';
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+
+    
+
+        $pageObj = new Page($dbc);
+        $pageObj->findById(4);
+        $variables['pageObj'] = $pageObj;
 
 
         $template = new Template('default');

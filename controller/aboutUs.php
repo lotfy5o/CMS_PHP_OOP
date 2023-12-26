@@ -3,8 +3,15 @@
 class aboutController extends Controller {
     function defaultAction() {
     
-        $variables['title'] = 'About Us Page';
-        $variables['content'] = 'About Us Content of the page';
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+
+    
+
+        $pageObj = new Page($dbc);
+        $pageObj->findById(2);
+        $variables['pageObj'] = $pageObj;
+
 
 
         $template = new Template('default');

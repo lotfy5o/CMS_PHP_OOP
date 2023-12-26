@@ -8,8 +8,12 @@ define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARAT
 
 require_once ROOT_PATH . '/src/controller.php';
 require_once ROOT_PATH . '/src/template.php';
-require_once ROOT_PATH . '/src/page.php';
+require_once ROOT_PATH . '/src/databaseConnection.php';
+require_once ROOT_PATH . '/model/page.php';
 
+// connect to a MySQL
+DatabaseConnection::connect('localhost', 'darwin_cms', 'root', '');
+        
 
 
 // if / else logic
