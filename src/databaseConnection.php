@@ -13,8 +13,8 @@ final class DatabaseConnection {
         if (is_null(self::$instance)){
             // this class wil never be initialized as an object
             self::$instance = new DatabaseConnection();
-            return self::$instance;
         }
+        return self::$instance;
     }
 
     private function __construct(){}
